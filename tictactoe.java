@@ -13,9 +13,7 @@ public class tictactoe {
        
       //Game Initilization:
        System.out.println("Welcome to Tic Tac Toe -This program was created Clifford Xing\n");
-       
        System.out.println("When entering inputs, please enter the number assigned to each space below:");
-       
        System.out.println("-------------");
        System.out.println("| 1 | 2 | 3 |");
        System.out.println("-------------");
@@ -24,6 +22,7 @@ public class tictactoe {
        System.out.println("| 7 | 8 | 9 |");
        System.out.println("-------------");
        
+       //Begin Game
        while (game == true){
           System.out.println("Please type 'start' to begin the game");
           String m = s.nextLine();
@@ -34,7 +33,9 @@ public class tictactoe {
           }
        }
        
+       //Game Loop
        while(gameRunning == true){
+            //Termination Condition
             if (gamestatus == 1){
                    System.out.println("Player 1 Wins!");
                    break;
@@ -73,33 +74,22 @@ public class tictactoe {
                print_grid(grid);
                turnCount++;
                turn = turn  * (-1);
-               gamestatus = check_grid(grid,turnCount);
-              
+               gamestatus = check_grid(grid,turnCount);           
            }
-           
-           
-
        }
-       
-
-      
-       
-       
     }
     
-    
+        //checks if input is valid
         static Boolean valid_input(int input, int[][]grid, int turn) {
            int x = 0;
            int y = 0;
             if (input > 0 && input <=3){
                 x = 0;
             }
-            
-            if (input > 3 && input <=6){
+            else if (input > 3 && input <=6){
                 x = 1;
             }
-            
-            if (input > 6 && input <=9){
+            else if (input > 6 && input <=9){
                 x = 2;
             }
             
@@ -107,43 +97,44 @@ public class tictactoe {
                 y = 2;
             }
             
-            if (input % 3 == 1){
+            else if (input % 3 == 1){
                 y = 0;
             }
-            if (input % 3 == 2){
+           else  if (input % 3 == 2){
                 y = 1;
             }
+
 
             if (grid[x][y] == 0){
                 return true;
             }
             return false;
-            
         }
         
+        //places user input
         static void place_input(int input, int[][]grid, int turn) {
             int x = 0;
             int y = 0;
-              if (input > 0 && input <=3){
+            if (input > 0 && input <=3){
                 x = 0;
             }
             
-            if (input > 3 && input <=6){
+            else if (input > 3 && input <=6){
                 x = 1;
             }
             
-            if (input > 6 && input <=9){
+            else if (input > 6 && input <=9){
                 x = 2;
             }
             
-             if (input % 3 == 0){
+            if (input % 3 == 0){
                 y = 2;
             }
             
-            if (input % 3 == 1){
+            else if (input % 3 == 1){
                 y = 0;
             }
-            if (input % 3 == 2){
+            else if (input % 3 == 2){
                 y = 1;
             }
             
@@ -157,6 +148,7 @@ public class tictactoe {
             
         }
         
+        //prints current grid
         static void print_grid(int[][]grid){
             System.out.println("-------------");
             for (int i = 0; i<3; i++){
@@ -180,6 +172,7 @@ public class tictactoe {
             }
         }
        
+        //checks for wins or ties
         static int check_grid(int[][]grid, int turnCount){
            
            //check rows
